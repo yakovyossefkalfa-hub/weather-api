@@ -1,0 +1,19 @@
+
+function doGet(e) {
+  try {
+    // קבלת הטקסט שתומלל מהשיחה
+    var userText = e.parameter.text;
+    var apiKey = e.parameter.key;
+
+    // כאן אמורה לבוא הפנייה ל-API של Gemini לעיבוד התשובה
+    // כרגע נחזיר תשובה קבועה לבדיקה שהשרת עובד
+    var aiAnswer = "קיבלתי את השאלה שלך, השרת החדש עובד מצוין!";
+
+    // החזרת התשובה בפורמט שימות המשיח מבינים
+    return ContentService.createTextOutput("id_list_message=t-" + aiAnswer)
+      .setMimeType(ContentService.MimeType.TEXT);
+
+  } catch (err) {
+    return ContentService.createTextOutput("id_list_message=t-חלה שגיאה בשרת");
+  }
+}
